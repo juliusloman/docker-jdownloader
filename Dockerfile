@@ -2,7 +2,7 @@ FROM java:latest
 MAINTAINER lomo@kyberia.net
 
 ADD http://installer.jdownloader.org/JD2SilentSetup_x64.sh /tmp/JD2SilentSetup_x64.sh
-RUN adduser --disabled-password --quiet --gecos '' jdownloader \
+RUN apt-get update && apt-get -y install ffmpeg && apt-get clean && adduser --disabled-password --quiet --gecos '' jdownloader \
     && mkdir -p /download \
     && chown jdownloader /tmp/JD2SilentSetup_x64.sh \
     && chmod +x /tmp/JD2SilentSetup_x64.sh \
